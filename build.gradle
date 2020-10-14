@@ -22,11 +22,10 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
-def repo = new File(rootDir, "repository")
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository url: "file://${repo.absolutePath}"
+            repository url: "file://${new File(rootDir, "repository").absolutePath}"
         }
     }
 }
