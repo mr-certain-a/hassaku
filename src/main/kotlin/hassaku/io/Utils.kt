@@ -1,5 +1,7 @@
 package hassaku.io
 
+import java.io.InputStream
+import java.io.OutputStream
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -21,6 +23,9 @@ fun String.toPath(): Path {
     return Paths.get(this)
 }
 
+val String.path: Path
+    get() = Paths.get(this)
+
 val Path.isDirectory: Boolean
     get() = Files.isDirectory(this)
 
@@ -29,4 +34,10 @@ val Path.nameWithoutExtension: String
 
 val Path.extension: String
     get() = this.toFile().extension
+
+val Path.newOutputStream: OutputStream
+    get() = Files.newOutputStream(this)
+
+val Path.newInputStream: InputStream
+    get() = Files.newInputStream(this)
 
