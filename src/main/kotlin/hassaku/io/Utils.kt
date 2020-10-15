@@ -5,6 +5,7 @@ import java.io.OutputStream
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.nio.file.attribute.FileAttribute
 import java.util.stream.Stream
 
 fun Path.createDirectories(): Path {
@@ -41,3 +42,6 @@ val Path.newOutputStream: OutputStream
 val Path.newInputStream: InputStream
     get() = Files.newInputStream(this)
 
+fun Path.createFile(vararg attr:FileAttribute<Any>): Path {
+    return Files.createFile(this, *attr)
+}
